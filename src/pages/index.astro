@@ -1,0 +1,23 @@
+---
+import AppFooter from '../components/layout/AppFooter.astro';
+import GameApp from '../features/game/ui/GameApp';
+import '../styles.css';
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Memo Test es un juego de memoria moderno, responsive y accesible construido con Astro, React y Motion."
+    />
+    <title>Memo Test | Memory Game</title>
+  </head>
+  <body>
+    <main>
+      <GameApp client:load />
+    </main>
+    <AppFooter />
+  </body>
+</html>
