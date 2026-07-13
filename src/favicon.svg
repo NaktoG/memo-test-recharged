@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Memo Test">
+  <rect width="64" height="64" rx="16" fill="#0f0f0f" />
+  <rect x="18" y="10" width="30" height="40" rx="6" fill="#f4b942" transform="rotate(8 33 30)" />
+  <rect x="14" y="14" width="30" height="40" rx="6" fill="#1f1a12" stroke="#f7c766" stroke-width="4" />
+  <path
+    d="M29 24c-3.4-4.2-10.5-1.5-10.5 4.2 0 6.3 8.7 10.4 10.5 14.6 1.8-4.2 10.5-8.3 10.5-14.6 0-5.7-7.1-8.4-10.5-4.2Z"
+    fill="#f7c766"
+  />
+  <circle cx="49" cy="47" r="6" fill="#f7c766" />
+  <circle cx="49" cy="47" r="2.5" fill="#0f0f0f" />
+</svg>
