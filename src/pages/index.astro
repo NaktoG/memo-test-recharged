@@ -1,6 +1,7 @@
 ---
 import AppFooter from '../components/layout/AppFooter.astro';
 import GameApp from '../features/game/ui/GameApp';
+import faviconUrl from '../favicon.ico?url';
 import '../styles.css';
 ---
 
@@ -12,6 +13,7 @@ import '../styles.css';
       name="description"
       content="Memo Test es un juego de memoria moderno, responsive y accesible construido con Astro, React y Motion."
     />
+    <link rel="icon" href={faviconUrl} sizes="any" />
     <title>Memo Test | Memory Game</title>
   </head>
   <body>
