@@ -1,5 +1,7 @@
 import { motion } from 'motion/react';
 import type { Dispatch, SetStateAction } from 'react';
+import type { TranslationDictionary } from '../application/i18n';
+import type { PlayerSettings } from '../application/usePlayerSettings';
 import type { Category } from '../domain/entities/category';
 import type { GameOptions } from '../domain/entities/game';
 import type { Level } from '../domain/entities/level';
@@ -11,42 +13,64 @@ interface StartScreenProps {
   readonly options: GameOptions;
   readonly setOptions: Dispatch<SetStateAction<GameOptions>>;
   readonly startGame: (options?: GameOptions) => void;
+  readonly settings: PlayerSettings;
+  readonly t: TranslationDictionary;
+  readonly onUpdateSettings: (settings: PlayerSettings) => void;
+  readonly onClearPlayer: () => void;
 }
 
-export const StartScreen = ({ categories, levels, options, setOptions, startGame }: StartScreenProps) => {
+export const StartScreen = ({ categories, levels, options, setOptions, startGame, settings, t, onUpdateSettings, onClearPlayer }: StartScreenProps) => {
   const selectedCategory = categories.find((category) => category.id === options.categoryId) ?? categories[0];
+  const selectedCategoryText = selectedCategory ? t.categories[selectedCategory.id] : undefined;
 
   return (
     <motion.div {...screenMotion} className="grid gap-6 xl:grid-cols-[minmax(0,0.9fr)_minmax(20rem,1fr)]">
       <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.06] p-5 backdrop-blur sm:p-7">
-        <h2 className="text-2xl font-black text-white">Configura tu desafio</h2>
+        <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+          <p className="rounded-full bg-white/10 px-3 py-1 text-sm font-bold text-cyan-100">{settings.nickname}</p>
+          <div className="flex items-center gap-2">
+            <select
+              value={settings.locale}
+              onChange={(event) => onUpdateSettings({ ...settings, locale: event.target.value as PlayerSettings['locale'] })}
+              aria-label={t.languageLabel}
+              className="min-h-10 rounded-full border border-white/10 bg-slate-950/80 px-3 text-sm text-white"
+            >
+              <option value="es">ES</option>
+              <option value="en">EN</option>
+            </select>
+            <button type="button" onClick={onClearPlayer} className="min-h-10 rounded-full border border-white/10 px-3 text-xs font-bold text-slate-200 hover:bg-white/10">
+              {t.changePlayer}
+            </button>
+          </div>
+        </div>
+        <h2 className="text-2xl font-black text-white">{t.configureTitle}</h2>
         <p className="mt-2 text-sm leading-6 text-slate-300">
-          Elige una categoria y una dificultad. La partida se genera desde reglas de dominio puras y sin mutar datos base.
+          {t.configureSubtitle}
         </p>
 
         <div className="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-1">
           <label className="grid gap-2 text-sm font-semibold text-slate-200">
-            Categoria
+            {t.categoryLabel}
             <select
               value={options.categoryId}
               onChange={(event) => setOptions((current) => ({ ...current, categoryId: event.target.value }))}
               className="min-h-12 rounded-2xl border border-white/10 bg-slate-950/80 px-4 text-white"
             >
               {categories.map((category) => (
-                <option key={category.id} value={category.id}>{category.name}</option>
+                <option key={category.id} value={category.id}>{t.categories[category.id]?.name ?? category.name}</option>
               ))}
             </select>
           </label>
 
           <label className="grid gap-2 text-sm font-semibold text-slate-200">
-            Dificultad
+            {t.levelLabel}
             <select
               value={options.levelId}
               onChange={(event) => setOptions((current) => ({ ...current, levelId: event.target.value as GameOptions['levelId'] }))}
               className="min-h-12 rounded-2xl border border-white/10 bg-slate-950/80 px-4 text-white"
             >
               {levels.map((level) => (
-                <option key={level.id} value={level.id}>{level.name} - {level.pairCount} pares</option>
+                <option key={level.id} value={level.id}>{t.levels[level.id]} - {level.pairCount} {t.pairs}</option>
               ))}
             </select>
           </label>
@@ -59,15 +83,15 @@ export const StartScreen = ({ categories, levels, options, setOptions, startGame
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
-          Iniciar partida
+          {t.startGame}
         </motion.button>
       </div>
 
       <div className="relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-slate-950/60 p-6 backdrop-blur">
         <div className="absolute right-0 top-0 h-32 w-32 rounded-full bg-fuchsia-400/20 blur-3xl" />
-        <p className="text-sm font-bold uppercase tracking-[0.24em] text-cyan-200">Preview</p>
-        <h3 className="mt-4 text-3xl font-black text-white">{selectedCategory?.name}</h3>
-        <p className="mt-3 max-w-lg text-slate-300">{selectedCategory?.description}</p>
+        <p className="text-sm font-bold uppercase tracking-[0.24em] text-cyan-200">{t.preview}</p>
+        <h3 className="mt-4 text-3xl font-black text-white">{selectedCategoryText?.name ?? selectedCategory?.name}</h3>
+        <p className="mt-3 max-w-lg text-slate-300">{selectedCategoryText?.description ?? selectedCategory?.description}</p>
         <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
           {Array.from({ length: 8 }).map((_, index) => (
             <motion.div
