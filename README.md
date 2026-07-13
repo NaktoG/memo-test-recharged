@@ -2,6 +2,8 @@
 
 Juego de memoria moderno construido con **Astro**, **React**, **TypeScript**, **Tailwind CSS** y **Motion**. La aplicacion conserva la idea original del proyecto: seleccionar categoria y dificultad, encontrar pares antes de que termine el tiempo y registrar estadisticas locales.
 
+Incluye entrada con nickname local, interfaz bilingue Espanol/Ingles, sonidos opcionales y celebracion visual al ganar.
+
 ## Stack
 
 - Astro para shell, build estatico y GitHub Pages.
@@ -49,6 +51,7 @@ Las estadisticas se guardan en `localStorage` y no contienen datos personales.
 - racha actual y mejor racha
 - mejor tiempo por dificultad
 - mejor score por dificultad
+- nickname, idioma y sonido como preferencias locales
 
 ## Deploy En GitHub Pages
 
@@ -81,6 +84,7 @@ Ver [`docs/GIT_WORKFLOW.md`](docs/GIT_WORKFLOW.md).
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
 - [`docs/TESTING.md`](docs/TESTING.md)
 - [`docs/ACCESSIBILITY.md`](docs/ACCESSIBILITY.md)
+- [`docs/PRIVACY.md`](docs/PRIVACY.md)
 - [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md)
 - [`docs/decisions`](docs/decisions)
 - [`docs/diagrams`](docs/diagrams)

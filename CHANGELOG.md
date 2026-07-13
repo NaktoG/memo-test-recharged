@@ -1,5 +1,18 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+
+- Pantalla de entrada con nickname local.
+- Soporte bilingue Espanol/Ingles.
+- Sonidos opcionales para interacciones y resultados.
+- Celebracion visual con confetti al ganar.
+
+### Changed
+
+- Mejora del flip 3D de tarjetas para evitar logos invertidos.
+
 ## [1.0.0] - 2026-07-13
 
 ### Added
