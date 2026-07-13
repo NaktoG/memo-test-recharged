@@ -64,14 +64,14 @@ export default function GameApp() {
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <motion.div
           aria-hidden="true"
-          className="absolute left-1/2 top-10 h-72 w-72 -translate-x-1/2 rounded-full bg-cyan-400/20 blur-3xl sm:h-[28rem] sm:w-[28rem]"
+          className="absolute left-1/2 top-10 h-72 w-72 -translate-x-1/2 rounded-full bg-amber-400/15 blur-3xl sm:h-[28rem] sm:w-[28rem]"
           animate={{ scale: [1, 1.12, 1], opacity: [0.45, 0.8, 0.45] }}
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         />
       </div>
 
       <div className="grid flex-1 gap-5 lg:grid-cols-[minmax(0,1fr)_22rem]">
-        <div className="min-w-0 rounded-[2rem] border border-white/10 bg-slate-950/45 p-4 shadow-glow backdrop-blur-xl sm:p-6 lg:p-8">
+        <div className="min-w-0 rounded-[2rem] border border-amber-200/10 bg-neutral-950/65 p-4 shadow-glow backdrop-blur-xl sm:p-6 lg:p-8">
           <GameHeader game={game} playerName={settings.nickname} t={t} />
 
           <AnimatePresence mode="wait">

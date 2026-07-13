@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 
-const colors = ['#22d3ee', '#818cf8', '#f0abfc', '#34d399', '#facc15', '#fb7185'] as const;
+const colors = ['#d8aa3d', '#f2cf74', '#a8915f', '#fafaf9', '#78716c', '#d08770'] as const;
 
 export const WinConfetti = () => (
   <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden" aria-hidden="true">
