@@ -12,10 +12,10 @@ interface GameBoardProps {
 
 export const GameBoard = ({ game, t, onSelectCard }: GameBoardProps) => (
   <motion.div {...screenMotion}>
-    <div className="mb-5 flex flex-wrap items-center gap-3 text-sm text-slate-300">
-      <span className="rounded-full bg-white/10 px-3 py-1">{t.categories[game.category.id]?.name ?? game.category.name}</span>
-      <span className="rounded-full bg-white/10 px-3 py-1">{t.levels[game.level.id]}</span>
-      <span className="rounded-full bg-white/10 px-3 py-1">{game.cards.length / 2} {t.pairs}</span>
+    <div className="mb-5 flex flex-wrap items-center gap-3 text-sm text-stone-300">
+      <span className="rounded-full bg-amber-200/10 px-3 py-1">{t.categories[game.category.id]?.name ?? game.category.name}</span>
+      <span className="rounded-full bg-amber-200/10 px-3 py-1">{t.levels[game.level.id]}</span>
+      <span className="rounded-full bg-amber-200/10 px-3 py-1">{game.cards.length / 2} {t.pairs}</span>
     </div>
 
     <div className="grid grid-cols-[repeat(auto-fit,minmax(clamp(4.7rem,18vw,8rem),1fr))] gap-3 sm:gap-4">
