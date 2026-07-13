@@ -12,7 +12,7 @@ const defaultOptions: GameOptions = {
   levelId: levels[0]?.id ?? 'easy',
 };
 
-export const useMemoryGame = () => {
+export const useMemoryGame = (playerName = 'Player') => {
   const [options, setOptions] = useState<GameOptions>(defaultOptions);
   const [game, setGame] = useState<GameState | null>(null);
   const recordedGameIdRef = useRef<string | null>(null);
@@ -69,8 +69,8 @@ export const useMemoryGame = () => {
     }
 
     recordedGameIdRef.current = game.id;
-    recordResult(game);
-  }, [game, recordResult]);
+    recordResult(game, playerName);
+  }, [game, playerName, recordResult]);
 
   return {
     categories,

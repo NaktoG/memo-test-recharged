@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+### Added
+
+- Ranking local top 10 por mayor score y menor tiempo.
+
+## [Unreleased - Black amber theme]
+
 ### Changed
 
 - Rediseño de paleta visual hacia una estética negro/dorado con amarillo suave.

@@ -1,6 +1,6 @@
 import type { GameStats } from '../domain/entities/stats';
 import type { LevelId } from '../domain/entities/level';
-import { formatNullableTime } from '../application/formatters';
+import { formatNullableTime, formatTime } from '../application/formatters';
 import type { TranslationDictionary } from '../application/i18n';
 
 interface StatsPanelProps {
@@ -42,6 +42,35 @@ export const StatsPanel = ({ stats, activeLevel, t, onResetStats }: StatsPanelPr
           <Stat label={t.bestScore} value={best.bestScore} compact />
         </dl>
       </div>
+
+      <section className="mt-5 rounded-3xl border border-amber-200/10 bg-black/35 p-4" aria-labelledby="local-ranking-title">
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <h3 id="local-ranking-title" className="text-sm font-black uppercase tracking-[0.22em] text-amber-100">
+              {t.ranking}
+            </h3>
+            <p className="mt-1 text-xs text-stone-400">{t.rankingSubtitle}</p>
+          </div>
+          <span className="rounded-full bg-amber-200/10 px-2.5 py-1 text-xs font-black text-amber-100">Top 10</span>
+        </div>
+
+        {stats.leaderboard.length === 0 ? (
+          <p className="mt-4 rounded-2xl bg-stone-900/55 p-4 text-sm text-stone-300">{t.noRanking}</p>
+        ) : (
+          <ol className="mt-4 grid gap-2">
+            {stats.leaderboard.map((entry, index) => (
+              <li key={entry.id} className="grid grid-cols-[2rem_minmax(0,1fr)_auto] items-center gap-3 rounded-2xl bg-stone-900/55 p-3">
+                <span className="grid h-8 w-8 place-items-center rounded-full bg-amber-200 text-sm font-black text-black">{index + 1}</span>
+                <div className="min-w-0">
+                  <p className="truncate text-sm font-black text-stone-50" title={entry.playerName}>{entry.playerName}</p>
+                  <p className="text-xs text-stone-400">{t.levels[entry.levelId]} · {formatTime(entry.elapsedSeconds)} · {entry.moves} {t.moves}</p>
+                </div>
+                <span className="text-right text-sm font-black text-amber-100">{entry.score}</span>
+              </li>
+            ))}
+          </ol>
+        )}
+      </section>
     </aside>
   );
 };
