@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Rediseño de paleta visual hacia una estética negro/dorado con amarillo suave.
+
+## [Unreleased - Player onboarding]
+
 ### Added
 
 - Pantalla de entrada con nickname local.

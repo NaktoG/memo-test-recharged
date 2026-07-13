@@ -9,7 +9,7 @@ export default {
         body: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        glow: "0 0 50px rgb(99 102 241 / 0.35)",
+        glow: "0 0 50px rgb(216 170 61 / 0.24)",
       },
     },
   },

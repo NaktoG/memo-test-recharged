@@ -25,36 +25,36 @@ export const StartScreen = ({ categories, levels, options, setOptions, startGame
 
   return (
     <motion.div {...screenMotion} className="grid gap-6 xl:grid-cols-[minmax(0,0.9fr)_minmax(20rem,1fr)]">
-      <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.06] p-5 backdrop-blur sm:p-7">
+      <div className="rounded-[1.75rem] border border-amber-200/10 bg-neutral-950/70 p-5 backdrop-blur sm:p-7">
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
-          <p className="rounded-full bg-white/10 px-3 py-1 text-sm font-bold text-cyan-100">{settings.nickname}</p>
+          <p className="rounded-full bg-amber-200/10 px-3 py-1 text-sm font-bold text-amber-100">{settings.nickname}</p>
           <div className="flex items-center gap-2">
             <select
               value={settings.locale}
               onChange={(event) => onUpdateSettings({ ...settings, locale: event.target.value as PlayerSettings['locale'] })}
               aria-label={t.languageLabel}
-              className="min-h-10 rounded-full border border-white/10 bg-slate-950/80 px-3 text-sm text-white"
+              className="min-h-10 rounded-full border border-amber-200/10 bg-black/80 px-3 text-sm text-stone-50"
             >
               <option value="es">ES</option>
               <option value="en">EN</option>
             </select>
-            <button type="button" onClick={onClearPlayer} className="min-h-10 rounded-full border border-white/10 px-3 text-xs font-bold text-slate-200 hover:bg-white/10">
+            <button type="button" onClick={onClearPlayer} className="min-h-10 rounded-full border border-amber-200/10 px-3 text-xs font-bold text-stone-200 hover:bg-amber-200/10">
               {t.changePlayer}
             </button>
           </div>
         </div>
         <h2 className="text-2xl font-black text-white">{t.configureTitle}</h2>
-        <p className="mt-2 text-sm leading-6 text-slate-300">
+        <p className="mt-2 text-sm leading-6 text-stone-300">
           {t.configureSubtitle}
         </p>
 
         <div className="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-1">
-          <label className="grid gap-2 text-sm font-semibold text-slate-200">
+          <label className="grid gap-2 text-sm font-semibold text-stone-200">
             {t.categoryLabel}
             <select
               value={options.categoryId}
               onChange={(event) => setOptions((current) => ({ ...current, categoryId: event.target.value }))}
-              className="min-h-12 rounded-2xl border border-white/10 bg-slate-950/80 px-4 text-white"
+              className="min-h-12 rounded-2xl border border-amber-200/10 bg-black/80 px-4 text-stone-50"
             >
               {categories.map((category) => (
                 <option key={category.id} value={category.id}>{t.categories[category.id]?.name ?? category.name}</option>
@@ -62,12 +62,12 @@ export const StartScreen = ({ categories, levels, options, setOptions, startGame
             </select>
           </label>
 
-          <label className="grid gap-2 text-sm font-semibold text-slate-200">
+          <label className="grid gap-2 text-sm font-semibold text-stone-200">
             {t.levelLabel}
             <select
               value={options.levelId}
               onChange={(event) => setOptions((current) => ({ ...current, levelId: event.target.value as GameOptions['levelId'] }))}
-              className="min-h-12 rounded-2xl border border-white/10 bg-slate-950/80 px-4 text-white"
+              className="min-h-12 rounded-2xl border border-amber-200/10 bg-black/80 px-4 text-stone-50"
             >
               {levels.map((level) => (
                 <option key={level.id} value={level.id}>{t.levels[level.id]} - {level.pairCount} {t.pairs}</option>
@@ -79,7 +79,7 @@ export const StartScreen = ({ categories, levels, options, setOptions, startGame
         <motion.button
           type="button"
           onClick={() => startGame(options)}
-          className="mt-7 min-h-14 w-full rounded-2xl bg-gradient-to-r from-cyan-300 via-indigo-300 to-fuchsia-300 px-5 py-4 text-base font-black text-slate-950 shadow-glow transition hover:brightness-110"
+          className="mt-7 min-h-14 w-full rounded-2xl bg-gradient-to-r from-amber-200 via-yellow-300 to-stone-200 px-5 py-4 text-base font-black text-black shadow-glow transition hover:brightness-110"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
@@ -87,16 +87,16 @@ export const StartScreen = ({ categories, levels, options, setOptions, startGame
         </motion.button>
       </div>
 
-      <div className="relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-slate-950/60 p-6 backdrop-blur">
-        <div className="absolute right-0 top-0 h-32 w-32 rounded-full bg-fuchsia-400/20 blur-3xl" />
-        <p className="text-sm font-bold uppercase tracking-[0.24em] text-cyan-200">{t.preview}</p>
+      <div className="relative overflow-hidden rounded-[1.75rem] border border-amber-200/10 bg-black/60 p-6 backdrop-blur">
+        <div className="absolute right-0 top-0 h-32 w-32 rounded-full bg-amber-400/15 blur-3xl" />
+        <p className="text-sm font-bold uppercase tracking-[0.24em] text-amber-200">{t.preview}</p>
         <h3 className="mt-4 text-3xl font-black text-white">{selectedCategoryText?.name ?? selectedCategory?.name}</h3>
-        <p className="mt-3 max-w-lg text-slate-300">{selectedCategoryText?.description ?? selectedCategory?.description}</p>
+        <p className="mt-3 max-w-lg text-stone-300">{selectedCategoryText?.description ?? selectedCategory?.description}</p>
         <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
           {Array.from({ length: 8 }).map((_, index) => (
             <motion.div
               key={index}
-              className="aspect-square rounded-3xl border border-white/10 bg-gradient-to-br from-white/15 to-white/[0.03]"
+              className="aspect-square rounded-3xl border border-amber-200/10 bg-gradient-to-br from-amber-100/15 to-stone-950/60"
               animate={{ y: [0, -8, 0] }}
               transition={{ delay: index * 0.08, duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
             />

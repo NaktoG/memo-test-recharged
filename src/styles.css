@@ -5,15 +5,15 @@
 @layer base {
   :root {
     color-scheme: dark;
-    --color-bg: #050816;
-    --color-surface: rgb(15 23 42 / 0.72);
-    --color-surface-strong: rgb(15 23 42 / 0.92);
-    --color-text: #f8fafc;
-    --color-muted: #a5b4fc;
-    --color-accent: #22d3ee;
-    --color-accent-strong: #818cf8;
-    --color-success: #34d399;
-    --color-danger: #fb7185;
+    --color-bg: #050505;
+    --color-surface: rgb(23 23 23 / 0.76);
+    --color-surface-strong: rgb(10 10 10 / 0.94);
+    --color-text: #fafaf9;
+    --color-muted: #d6d3d1;
+    --color-accent: #d8aa3d;
+    --color-accent-strong: #f2cf74;
+    --color-success: #a3be8c;
+    --color-danger: #d08770;
     --radius-lg: 1.25rem;
     --radius-xl: 1.75rem;
   }
@@ -34,9 +34,9 @@
     margin: 0;
     color: var(--color-text);
     background:
-      radial-gradient(circle at top left, rgb(34 211 238 / 0.22), transparent 34rem),
-      radial-gradient(circle at 80% 20%, rgb(129 140 248 / 0.2), transparent 28rem),
-      linear-gradient(135deg, #050816 0%, #0f172a 48%, #111827 100%);
+      radial-gradient(circle at top left, rgb(216 170 61 / 0.18), transparent 34rem),
+      radial-gradient(circle at 82% 18%, rgb(120 113 108 / 0.18), transparent 30rem),
+      linear-gradient(135deg, #050505 0%, #111111 48%, #1c1917 100%);
   }
 
   button,
