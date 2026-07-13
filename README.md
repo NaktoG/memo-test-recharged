@@ -52,6 +52,7 @@ Las estadisticas se guardan en `localStorage` y no contienen datos personales.
 - mejor tiempo por dificultad
 - mejor score por dificultad
 - nickname, idioma y sonido como preferencias locales
+- ranking local top 10 ordenado por mas puntos y menor tiempo
 
 ## Deploy En GitHub Pages
 

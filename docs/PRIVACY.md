@@ -10,11 +10,13 @@ Se guardan en `localStorage` del navegador:
 - idioma preferido,
 - preferencia de sonido,
 - estadisticas locales de partidas.
+- ranking local de partidas ganadas.
 
 ## Clasificacion
 
 - Nickname: dato de personalizacion local. Puede ser personal si el usuario decide escribir informacion identificable.
 - Estadisticas: dato operativo local.
+- Ranking: dato operativo local asociado al nickname elegido.
 - Preferencias: dato tecnico local.
 
 ## Minimizacion

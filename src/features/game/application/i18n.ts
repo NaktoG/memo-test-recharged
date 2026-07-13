@@ -46,6 +46,10 @@ export interface TranslationDictionary {
   readonly streak: string;
   readonly bestStreak: string;
   readonly activeBest: string;
+  readonly ranking: string;
+  readonly rankingSubtitle: string;
+  readonly noRanking: string;
+  readonly rankPlayer: string;
   readonly bestScore: string;
   readonly greeting: string;
   readonly changePlayer: string;
@@ -97,6 +101,10 @@ export const dictionaries: Record<Locale, TranslationDictionary> = {
     streak: 'Racha',
     bestStreak: 'Mejor racha',
     activeBest: 'Mejor marca activa',
+    ranking: 'Ranking local',
+    rankingSubtitle: 'Mas puntos en menor tiempo',
+    noRanking: 'Gana una partida para entrar al ranking.',
+    rankPlayer: 'Jugador',
     bestScore: 'Score',
     greeting: 'Jugador',
     changePlayer: 'Cambiar jugador',
@@ -155,6 +163,10 @@ export const dictionaries: Record<Locale, TranslationDictionary> = {
     streak: 'Streak',
     bestStreak: 'Best streak',
     activeBest: 'Active best',
+    ranking: 'Local ranking',
+    rankingSubtitle: 'Most points in the shortest time',
+    noRanking: 'Win a match to enter the ranking.',
+    rankPlayer: 'Player',
     bestScore: 'Score',
     greeting: 'Player',
     changePlayer: 'Change player',
