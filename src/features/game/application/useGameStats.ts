@@ -10,9 +10,9 @@ export const useGameStats = () => {
     setStats(readStats());
   }, []);
 
-  const recordResult = useCallback((game: GameState) => {
+  const recordResult = useCallback((game: GameState, playerName: string) => {
     setStats((current) => {
-      const next = applyGameResult(current, game);
+      const next = applyGameResult(current, game, playerName);
       writeStats(next);
       return next;
     });

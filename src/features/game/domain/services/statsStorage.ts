@@ -1,8 +1,9 @@
 import type { GameState } from '../entities/game';
-import type { GameStats, LevelBestStats } from '../entities/stats';
+import type { GameStats, LeaderboardEntry, LevelBestStats } from '../entities/stats';
 import type { LevelId } from '../entities/level';
 
 const STORAGE_KEY = 'memo-test.stats.v1';
+const LEADERBOARD_LIMIT = 10;
 
 const emptyBestStats: LevelBestStats = {
   bestTimeSeconds: null,
@@ -16,6 +17,7 @@ export const createInitialStats = (): GameStats => ({
   currentStreak: 0,
   bestStreak: 0,
   lastResult: null,
+  leaderboard: [],
   bestByLevel: {
     easy: emptyBestStats,
     medium: emptyBestStats,
@@ -36,7 +38,8 @@ export const readStats = (storage: Storage | undefined = globalThis.localStorage
   }
 
   try {
-    return { ...createInitialStats(), ...JSON.parse(raw) } as GameStats;
+    const parsed = JSON.parse(raw) as Partial<GameStats>;
+    return { ...createInitialStats(), ...parsed, leaderboard: parsed.leaderboard ?? [] } as GameStats;
   } catch {
     return createInitialStats();
   }
@@ -51,7 +54,34 @@ export const clearStats = (storage: Storage | undefined = globalThis.localStorag
   return createInitialStats();
 };
 
-export const applyGameResult = (stats: GameStats, game: GameState): GameStats => {
+const sortLeaderboard = (entries: readonly LeaderboardEntry[]): LeaderboardEntry[] =>
+  [...entries]
+    .sort((left, right) => {
+      if (right.score !== left.score) {
+        return right.score - left.score;
+      }
+
+      if (left.elapsedSeconds !== right.elapsedSeconds) {
+        return left.elapsedSeconds - right.elapsedSeconds;
+      }
+
+      return left.moves - right.moves;
+    })
+    .slice(0, LEADERBOARD_LIMIT);
+
+const createLeaderboardEntry = (game: GameState, playerName: string): LeaderboardEntry => ({
+  id: `${game.id}-${game.score}-${game.elapsedSeconds}`,
+  playerName: playerName.trim() || 'Player',
+  score: game.score,
+  elapsedSeconds: game.elapsedSeconds,
+  moves: game.moves,
+  mistakes: game.mistakes,
+  levelId: game.level.id,
+  categoryName: game.category.name,
+  completedAt: new Date().toISOString(),
+});
+
+export const applyGameResult = (stats: GameStats, game: GameState, playerName = 'Player'): GameStats => {
   if (game.status !== 'won' && game.status !== 'lost') {
     return stats;
   }
@@ -70,6 +100,7 @@ export const applyGameResult = (stats: GameStats, game: GameState): GameStats =>
         bestScore: Math.max(previousBest.bestScore, game.score),
       }
     : previousBest;
+  const leaderboard = won ? sortLeaderboard([...stats.leaderboard, createLeaderboardEntry(game, playerName)]) : stats.leaderboard;
 
   return {
     ...stats,
@@ -79,6 +110,7 @@ export const applyGameResult = (stats: GameStats, game: GameState): GameStats =>
     currentStreak,
     bestStreak: Math.max(stats.bestStreak, currentStreak),
     lastResult: result,
+    leaderboard,
     bestByLevel: {
       ...stats.bestByLevel,
       [levelId]: bestForLevel,

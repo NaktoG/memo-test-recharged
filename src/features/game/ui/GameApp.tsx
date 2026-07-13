@@ -13,9 +13,9 @@ import { StatsPanel } from './StatsPanel';
 import { WinConfetti } from './WinConfetti';
 
 export default function GameApp() {
-  const memoryGame = useMemoryGame();
-  const { game, stats, resetStats } = memoryGame;
   const { settings, isReady, updateSettings, clearPlayer } = usePlayerSettings();
+  const memoryGame = useMemoryGame(settings.nickname);
+  const { game, stats, resetStats } = memoryGame;
   const t = dictionaries[settings.locale];
   const playSound = useSoundEffects(settings.soundEnabled);
   const previousStatusRef = useRef(game?.status);
