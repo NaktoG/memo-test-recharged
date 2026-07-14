@@ -11,6 +11,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub_Pages-222222?logo=github&logoColor=white)](https://pages.github.com)
+[![Vercel](https://img.shields.io/badge/Deploy-Vercel-000000?logo=vercel&logoColor=white)](https://memo-test-recharged.vercel.app)
 
 </div>
 
@@ -41,7 +42,9 @@ La app esta construida con Astro como shell estatico y React como isla interacti
 
 ## Demo
 
-> [Demo en vivo](https://naktog.github.io/memo-test-recharged/)
+**Vercel:** [memo-test-recharged.vercel.app](https://memo-test-recharged.vercel.app)
+
+**GitHub Pages:** [naktog.github.io/memo-test-recharged](https://naktog.github.io/memo-test-recharged/)
 
 ## Stack tecnologico
 
@@ -55,7 +58,7 @@ La app esta construida con Astro como shell estatico y React como isla interacti
 | Tests unitarios | [Vitest](https://vitest.dev/) | 4.1 |
 | Linting | [ESLint](https://eslint.org/) | 9.17 |
 | Formateo | [Prettier](https://prettier.io/) | 3.4 |
-| Hosting | [GitHub Pages](https://pages.github.com/) | Actions |
+| Hosting | [Vercel](https://vercel.com/) | Actions |
 
 ## Instalacion
 
