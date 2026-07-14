@@ -6,9 +6,9 @@
 
 ## Estado
 
-- [ ] Preview desplegada
-- [ ] Producción desplegada
-- [ ] Variables configuradas
+- [x] Preview desplegada
+- [x] Producción desplegada
+- [x] Variables configuradas
 - [ ] Dominio configurado
 - [x] Pruebas completadas
 
@@ -23,6 +23,12 @@
 | Output Directory | `dist` |
 | Node.js | `>=22.13.0` |
 | Gestor de paquetes | npm |
+
+## URL de Producción
+
+```txt
+https://memo-test-recharged.vercel.app
+```
 
 ## Variables de entorno
 
@@ -63,6 +69,12 @@ Resultado: instalación, Astro check, lint, tests unitarios y build estático co
 ## Rollback
 
 Revertir la Pull Request de migración. El despliegue actual de GitHub Pages puede mantenerse independiente mientras se valida Vercel.
+
+Para rollback desde CLI:
+
+```bash
+vercel rollback
+```
 
 ## Última revisión
 
